@@ -1,7 +1,7 @@
 package med.voll.api.medico;
 
 import med.voll.api.endereco.DadosEndereco;
-import jakarta. persistence.*;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -27,4 +27,18 @@ public class Medico
 
     @Embedded
     private DadosEndereco endereco;
+
+    public Medico(DadosCadastroMedico dados) {
+        this.nome = dados.nome();
+        this.email = dados.email();
+        this.crm = dados.crm();
+        this.especialidade = dados.especialidade();
+        this.endereco = new DadosEndereco(dados.endereco().logradouro(), 
+        dados.endereco().bairro(), 
+        dados.endereco().cep(), 
+        dados.endereco().cidade(), 
+        dados.endereco().uf(), 
+        dados.endereco().complemento(), 
+        dados.endereco().numero());
+    }
 }
