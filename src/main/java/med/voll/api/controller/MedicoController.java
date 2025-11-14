@@ -8,7 +8,11 @@ import jakarta.validation.Valid;
 
 import java.util.List;
 
+//import org.hibernate.query.Page;
+import org.springframework.data.domain.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,9 +37,10 @@ public class MedicoController
         repository.save(new Medico(dados));
     }
 
+    // get é usado para listar recursos
     @GetMapping
-    public List<DadosListagemMedico> listar() {
+    public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
         // aqui convertemos cada Medico da lista em um DadosListagemMedico
-        return repository.findAll().stream().map(DadosListagemMedico::new).toList();
+        return repository.findAll(paginacao).map(DadosListagemMedico::new);
     }
 }
