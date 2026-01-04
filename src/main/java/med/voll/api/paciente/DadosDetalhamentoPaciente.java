@@ -16,7 +16,7 @@ public record DadosDetalhamentoPaciente(
             paciente.getNome(),
             paciente.getEmail(),
             paciente.getTelefone(),
-            new DadosEndereco(paciente.getEndereco())
+            new DadosEndereco(paciente.getEndereco(), paciente.getEmail(), paciente.getEmail(), paciente.getEmail(), paciente.getEmail(), paciente.getEmail(), paciente.getEmail())
         );
     }
 }
