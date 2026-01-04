@@ -2,13 +2,10 @@ package med.voll.api.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestClient.ResponseSpec;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-
-import java.util.List;
 
 //import org.hibernate.query.Page;
 import org.springframework.data.domain.Page;
